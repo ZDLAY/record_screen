@@ -72,6 +72,9 @@ class Win_Main:
                 # 转换为numpy数组
                 frame = np.array(img)
 
+                # 因为cv读取的话可能会出现颜色不对的情况
+                frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
+
                 # 获取当前时间戳
                 unix = time.time()
 
