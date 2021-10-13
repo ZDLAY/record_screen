@@ -4,7 +4,7 @@
 # email chinadlay@163.com
 
 # install 安装
-# pip install pyside2 pyautogui threading numpy opencv time pyqt5_tools pyqt5
+# pip install pyside2 pyautogui threading numpy opencv time pyqt5_tools pyqt5 random
 
 # 模块引用部分
 from PySide2.QtWidgets import QApplication, QMessageBox
@@ -14,6 +14,7 @@ import threading
 import numpy as np
 import cv2 as cv
 import time
+import random
 
 # 引用全局变量
 from lib.function import DLAY
@@ -22,7 +23,7 @@ from lib.function import DLAY
 cv.CAP_PROP_FPS = 30
 
 # 间隔
-op = 0.1
+op = 0.5
 
 
 # 类
@@ -80,9 +81,12 @@ class Win_Main:
 
                 # 间隔，越高可能会变卡
                 time.sleep(op)
+                
+                # 获取随机数因为时间戳1秒可能重复很多
+                rand = random.random()
 
                 # 文件保存目录和图片文件名
-                path = './data/' + str(int(unix)) + '.jpg'
+                path = './data/' + str(int(unix)) + str(rand) + '.jpg'
 
                 # 控制台输出
                 print("正在录屏,当前文件：{}".format(path, {}))
